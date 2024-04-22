@@ -1,0 +1,60 @@
+[gd_scene load_steps=8 format=3 uid="uid://clicowrhc21ve"]
+
+[ext_resource type="Script" path="res://Scripts/Enemy.gd" id="1_exf8q"]
+[ext_resource type="PackedScene" uid="uid://d352tbhush1ka" path="res://Assets/lavaslug.glb" id="2_a16r4"]
+[ext_resource type="PackedScene" uid="uid://wyas78h11w3c" path="res://Scenes/health_component.tscn" id="3_ytfef"]
+[ext_resource type="PackedScene" uid="uid://bq2gl0u2g5fgn" path="res://Scenes/hurtbox_component.tscn" id="4_rdfle"]
+[ext_resource type="PackedScene" uid="uid://c2bbmdsd1d3ac" path="res://Scenes/hitbox_component.tscn" id="5_m6gks"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_yfwit"]
+size = Vector3(0.725586, 0.626831, 1.64258)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_kaflc"]
+size = Vector3(0.725586, 0.888916, 1.92188)
+
+[node name="LavaSlug" type="CharacterBody3D" node_paths=PackedStringArray("animation_player") groups=["Enemy"]]
+collision_layer = 4
+collision_mask = 6
+script = ExtResource("1_exf8q")
+damage = -20
+heatvalue = 4
+animation_player = NodePath("lavaslug/AnimationPlayer")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.310868, -0.0258331)
+shape = SubResource("BoxShape3D_yfwit")
+
+[node name="lavaslug" parent="." instance=ExtResource("2_a16r4")]
+transform = Transform3D(-0.5, 0, -4.37114e-08, 0, 0.5, 0, 4.37114e-08, 0, -0.5, 0, 0, 0)
+
+[node name="Skeleton3D" parent="lavaslug/Armature" index="0"]
+bones/2/rotation = Quaternion(-0.0226588, -0.00151875, 0.0668617, 0.997504)
+bones/3/rotation = Quaternion(-0.585151, 0.0925448, -0.114796, 0.797405)
+bones/4/rotation = Quaternion(0.0327378, 0.00844244, 0.0107415, 0.999371)
+bones/5/rotation = Quaternion(-0.0688036, -0.00056875, 0.0198416, 0.997433)
+bones/6/rotation = Quaternion(-0.705606, 0.0460421, 0.0460421, 0.705606)
+bones/7/rotation = Quaternion(0, 0, -0.106138, 0.994352)
+
+[node name="HealthComponent" parent="." instance=ExtResource("3_ytfef")]
+max_health = 50
+
+[node name="HurtboxComponent" parent="." groups=["Enemy"] instance=ExtResource("4_rdfle")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0980392, 0)
+collision_layer = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="HurtboxComponent"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.426432, -0.0258331)
+shape = SubResource("BoxShape3D_yfwit")
+
+[node name="HitboxComponent" parent="." node_paths=PackedStringArray("health_component") groups=["Enemy"] instance=ExtResource("5_m6gks")]
+collision_layer = 4
+collision_mask = 0
+health_component = NodePath("../HealthComponent")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="HitboxComponent"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.435282, -0.0809803)
+shape = SubResource("BoxShape3D_kaflc")
+
+[connection signal="defeated" from="HealthComponent" to="." method="_on_health_component_defeated"]
+
+[editable path="lavaslug"]

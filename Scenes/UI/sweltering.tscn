@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://cw81c6k5rwqqf"]
+
+[ext_resource type="Material" uid="uid://dk4v32b5ppmws" path="res://Assets/Particles/sweltering.tres" id="1_5x76b"]
+[ext_resource type="Texture2D" uid="uid://4mabw46k0icj" path="res://Assets/sweltering.svg" id="1_nnb2r"]
+
+[node name="Sweltering" type="GPUParticles2D"]
+amount = 1
+process_material = ExtResource("1_5x76b")
+texture = ExtResource("1_nnb2r")
+lifetime = 0.9

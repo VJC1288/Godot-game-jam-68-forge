@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://d01vuihkxdt4c"]
+
+[ext_resource type="PackedScene" uid="uid://bdwbqsn65btfl" path="res://Assets/dwarf.glb" id="1_k1qfq"]
+
+[node name="dwarf" instance=ExtResource("1_k1qfq")]

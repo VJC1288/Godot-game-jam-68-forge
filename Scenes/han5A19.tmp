@@ -1,0 +1,37 @@
+[gd_scene load_steps=5 format=3 uid="uid://c1imcvehcr37t"]
+
+[ext_resource type="Script" path="res://Scripts/handattack.gd" id="1_5vlu2"]
+[ext_resource type="PackedScene" uid="uid://bq2gl0u2g5fgn" path="res://Scenes/hurtbox_component.tscn" id="1_ncr7q"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_ccgmr"]
+radius = 0.414921
+
+[sub_resource type="SphereMesh" id="SphereMesh_4nilt"]
+
+[node name="HandAttack" type="RigidBody3D"]
+collision_layer = 0
+collision_mask = 3
+script = ExtResource("1_5vlu2")
+SPEED = 10.0
+damage = -30
+
+[node name="HurtboxComponent" parent="." instance=ExtResource("1_ncr7q")]
+collision_layer = 4
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="HurtboxComponent"]
+shape = SubResource("SphereShape3D_ccgmr")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("SphereMesh_4nilt")
+skeleton = NodePath("")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_ccgmr")
+
+[node name="TimeOutTimer" type="Timer" parent="."]
+wait_time = 6.0
+one_shot = true
+autostart = true
+
+[connection signal="area_entered" from="HurtboxComponent" to="." method="_on_hurtbox_component_area_entered"]
+[connection signal="timeout" from="TimeOutTimer" to="." method="_on_time_out_timer_timeout"]

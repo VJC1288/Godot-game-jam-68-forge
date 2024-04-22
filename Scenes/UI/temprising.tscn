@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://bak1jnrv7f5b1"]
+
+[ext_resource type="Texture2D" uid="uid://daq1nq4jvavfn" path="res://Assets/temprising.svg" id="1_f450w"]
+[ext_resource type="Material" uid="uid://bojfx4i21ona5" path="res://Assets/Particles/temprising.tres" id="1_ncbvs"]
+
+[node name="TempRising" type="GPUParticles2D"]
+amount = 1
+process_material = ExtResource("1_ncbvs")
+texture = ExtResource("1_f450w")
+lifetime = 0.9

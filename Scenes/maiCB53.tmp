@@ -1,0 +1,118 @@
+[gd_scene load_steps=14 format=3 uid="uid://yg5j5j3ftk42"]
+
+[ext_resource type="Script" path="res://Scripts/Main.gd" id="1_kc5k5"]
+[ext_resource type="PackedScene" uid="uid://njfod8xarnho" path="res://Scenes/anvil.tscn" id="2_ywpje"]
+[ext_resource type="PackedScene" uid="uid://2nqrxwumdvik" path="res://Scenes/enemyspawner.tscn" id="3_8sp4a"]
+[ext_resource type="AudioStream" uid="uid://5je6mbc7vwer" path="res://Assets/Sounds/lava-loop-3-28887.mp3" id="4_ksswk"]
+[ext_resource type="PackedScene" uid="uid://bpv254igwn1vd" path="res://Scenes/volcanopit.tscn" id="5_bqjfq"]
+[ext_resource type="PackedScene" uid="uid://docnyp7cxuxsc" path="res://Scenes/UI/hud.tscn" id="5_xun1b"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ywx2g"]
+sky_top_color = Color(0.643137, 0.345098, 0.384314, 1)
+sky_horizon_color = Color(0.796078, 0.596078, 0.588235, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_47s0t"]
+sky_material = SubResource("ProceduralSkyMaterial_ywx2g")
+
+[sub_resource type="Environment" id="Environment_b3enl"]
+background_mode = 2
+sky = SubResource("Sky_47s0t")
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rm8d5"]
+albedo_color = Color(0.196078, 0.164706, 0.0117647, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ka08m"]
+albedo_color = Color(0.388235, 0.0862745, 0.137255, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4sisg"]
+albedo_color = Color(0.129412, 0.129412, 0.117647, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_r1t55"]
+size = Vector3(122.835, 1, 123.893)
+
+[node name="Main" type="Node3D"]
+script = ExtResource("1_kc5k5")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_b3enl")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 0, 0)
+shadow_enabled = true
+
+[node name="World" type="Node3D" parent="."]
+
+[node name="Arena" type="CSGCombiner3D" parent="World"]
+use_collision = true
+collision_layer = 2
+collision_mask = 0
+
+[node name="OuterRing" type="CSGCylinder3D" parent="World/Arena"]
+radius = 15.3754
+height = 1.36674
+sides = 32
+material = SubResource("StandardMaterial3D_rm8d5")
+
+[node name="OuterRing2" type="CSGCylinder3D" parent="World/Arena"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4.90622, 0)
+radius = 14.3049
+height = 8.60993
+sides = 32
+material = SubResource("StandardMaterial3D_rm8d5")
+
+[node name="InnerCutout" type="CSGCylinder3D" parent="World/Arena"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.546996, 0)
+operation = 2
+radius = 12.8358
+height = 1.19135
+sides = 32
+material = SubResource("StandardMaterial3D_ka08m")
+
+[node name="ForgePlatform" type="CSGCylinder3D" parent="World/Arena"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.243788, 0)
+sides = 16
+material = SubResource("StandardMaterial3D_4sisg")
+
+[node name="anvil" parent="World" instance=ExtResource("2_ywpje")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0.694497, 0.0781487)
+
+[node name="volcanopit" parent="World" instance=ExtResource("5_bqjfq")]
+transform = Transform3D(6, 0, 0, 0, 6, 0, 0, 0, 6, 0, -8.28631, 0)
+
+[node name="Lava" type="Area3D" parent="World/volcanopit"]
+transform = Transform3D(0.166667, 0, 0, 0, 0.166667, 0, 0, 0, 0.166667, 0, 2.54602, 0)
+collision_layer = 2
+collision_mask = 5
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="World/volcanopit/Lava"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.826321, -19.563, -0.586971)
+shape = SubResource("BoxShape3D_r1t55")
+
+[node name="AmbientLava" type="AudioStreamPlayer3D" parent="World"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -8, 0)
+stream = ExtResource("4_ksswk")
+attenuation_model = 3
+volume_db = -5.0
+
+[node name="PlayerManager" type="Node3D" parent="."]
+
+[node name="ProjectileManager" type="Node3D" parent="."]
+
+[node name="EnemySpawner" parent="." instance=ExtResource("3_8sp4a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00443745, 0, -0.01438)
+spawnerOn = null
+waveNumber = 7
+
+[node name="UIElements" type="Node" parent="."]
+process_mode = 3
+
+[node name="HUD" parent="UIElements" instance=ExtResource("5_xun1b")]
+
+[connection signal="leftAnvil" from="World/anvil" to="." method="_on_anvil_left_anvil"]
+[connection signal="nearAnvil" from="World/anvil" to="." method="_on_anvil_near_anvil"]
+[connection signal="body_entered" from="World/volcanopit/Lava" to="." method="_on_lava_body_entered"]
+[connection signal="finished" from="World/AmbientLava" to="." method="_on_ambient_lava_finished"]
+[connection signal="reset_game" from="UIElements/HUD" to="." method="_on_hud_reset_game"]

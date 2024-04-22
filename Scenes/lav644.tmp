@@ -1,0 +1,54 @@
+[gd_scene load_steps=6 format=3 uid="uid://dnwlwe11nwdnu"]
+
+[ext_resource type="PackedScene" uid="uid://cjlbg3xfqffwq" path="res://Scenes/baseEnemy.tscn" id="1_3uaj8"]
+[ext_resource type="PackedScene" uid="uid://bj3fob1rfkj66" path="res://Assets/lavabat.glb" id="2_7jvbv"]
+[ext_resource type="Script" path="res://Scripts/lava_bat.gd" id="2_y04ho"]
+[ext_resource type="Shape3D" uid="uid://bcfcap6f0882v" path="res://CollisionShapes/lava_bat_wings.tres" id="3_mh62k"]
+[ext_resource type="Shape3D" uid="uid://br8jft7njbp0b" path="res://CollisionShapes/lava_bat_body.tres" id="4_sc5l8"]
+
+[node name="LavaBat" instance=ExtResource("1_3uaj8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+collision_layer = 4
+script = ExtResource("2_y04ho")
+
+[node name="lavabat" parent="." index="0" instance=ExtResource("2_7jvbv")]
+transform = Transform3D(-0.5, 0, 4.37114e-08, 0, 0.5, 0, -4.37114e-08, 0, -0.5, 0, 0, 0)
+
+[node name="Skeleton3D" parent="lavabat/Armature" index="0"]
+bones/2/rotation = Quaternion(0.0386651, 0.0162737, 0.241125, 0.969587)
+bones/3/rotation = Quaternion(-0.186223, 0.0157658, -0.152027, 0.970547)
+bones/5/rotation = Quaternion(0.0386651, -0.0162737, -0.241125, 0.969587)
+bones/6/rotation = Quaternion(-0.186223, -0.0157658, 0.152027, 0.970547)
+
+[node name="CollisionShape3D" parent="." index="1"]
+transform = Transform3D(-4.37114e-08, -1, 4.37114e-08, 0, -4.37114e-08, -1, 1, -4.37114e-08, 1.91069e-15, 0, 0.05, 0.025)
+shape = ExtResource("3_mh62k")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="." index="2"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, -0.0414421)
+shape = ExtResource("4_sc5l8")
+
+[node name="CollisionShape3D" parent="HurtboxComponent" index="0"]
+transform = Transform3D(-4.37114e-08, -1, 0, -4.37114e-08, 1.91069e-15, -1, 1, -4.37114e-08, -4.37114e-08, 0, 0.05, 0.025)
+shape = ExtResource("3_mh62k")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="HurtboxComponent" index="1"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, -0.0414421)
+shape = ExtResource("4_sc5l8")
+
+[node name="HitboxComponent" parent="." index="5" node_paths=PackedStringArray("health_component")]
+health_component = NodePath("../HealthComponent")
+
+[node name="CollisionShape3D" parent="HitboxComponent" index="0"]
+transform = Transform3D(-4.37114e-08, -1, 0, -4.37114e-08, 1.91069e-15, -1, 1, -4.37114e-08, -4.37114e-08, 0, 0.05, 0.025)
+shape = ExtResource("3_mh62k")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="HitboxComponent" index="1"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, -0.0414421)
+shape = ExtResource("4_sc5l8")
+
+[node name="RayCast3D" type="RayCast3D" parent="." index="6"]
+collision_mask = 2
+collide_with_areas = true
+
+[editable path="lavabat"]

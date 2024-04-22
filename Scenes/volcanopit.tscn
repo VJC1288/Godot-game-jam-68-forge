@@ -1,0 +1,39 @@
+[gd_scene load_steps=10 format=3 uid="uid://bpv254igwn1vd"]
+
+[ext_resource type="PackedScene" uid="uid://b1quqcmljpvlc" path="res://Assets/volcanopit.glb" id="1_cbl18"]
+[ext_resource type="Script" path="res://Scripts/volcanopit.gd" id="2_8xu6g"]
+[ext_resource type="Material" uid="uid://dqbvaqkjf7ngr" path="res://Materials/volcanopit.tres" id="3_i0jc3"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_j8s6t"]
+frequency = 0.0245
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_8dpgn"]
+noise = SubResource("FastNoiseLite_j8s6t")
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_ekmr7"]
+frequency = 0.0685
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_mhtx6"]
+noise = SubResource("FastNoiseLite_ekmr7")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1lccb"]
+albedo_color = Color(0.211765, 0.207843, 0.207843, 1)
+albedo_texture = SubResource("NoiseTexture2D_8dpgn")
+metallic_specular = 0.0
+normal_enabled = true
+normal_texture = SubResource("NoiseTexture2D_mhtx6")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_d27nm"]
+size = Vector2(25, 25)
+
+[node name="volcanopit" instance=ExtResource("1_cbl18")]
+transform = Transform3D(20, 0, 0, 0, 20, 0, 0, 0, 20, 0, -26.4581, 0)
+script = ExtResource("2_8xu6g")
+
+[node name="Landscape_002" parent="." index="0"]
+transform = Transform3D(20, 0, 0, 0, 20, 0, 0, 0, 20, 0, -13.2064, 0)
+surface_material_override/0 = SubResource("StandardMaterial3D_1lccb")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." index="1"]
+mesh = SubResource("PlaneMesh_d27nm")
+surface_material_override/0 = ExtResource("3_i0jc3")

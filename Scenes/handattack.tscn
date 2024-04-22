@@ -1,0 +1,63 @@
+[gd_scene load_steps=10 format=3 uid="uid://c1imcvehcr37t"]
+
+[ext_resource type="Script" path="res://Scripts/handattack.gd" id="1_5vlu2"]
+[ext_resource type="PackedScene" uid="uid://bq2gl0u2g5fgn" path="res://Scenes/hurtbox_component.tscn" id="1_ncr7q"]
+[ext_resource type="Material" uid="uid://dqbvaqkjf7ngr" path="res://Materials/volcanopit.tres" id="3_t6en5"]
+[ext_resource type="Material" uid="uid://snlswq21pi1v" path="res://Assets/Particles/handattack.tres" id="4_c6n2v"]
+[ext_resource type="Texture2D" uid="uid://cis10p2qoosqf" path="res://Assets/orangecircle.svg" id="4_dcpbc"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_ccgmr"]
+radius = 0.265574
+
+[sub_resource type="SphereMesh" id="SphereMesh_4nilt"]
+material = ExtResource("3_t6en5")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_io1ld"]
+transparency = 1
+albedo_texture = ExtResource("4_dcpbc")
+emission_enabled = true
+emission = Color(1, 1, 1, 1)
+emission_energy_multiplier = 0.01
+billboard_mode = 1
+billboard_keep_scale = true
+
+[sub_resource type="QuadMesh" id="QuadMesh_0536g"]
+material = SubResource("StandardMaterial3D_io1ld")
+size = Vector2(0.5, 0.5)
+
+[node name="HandAttack" type="RigidBody3D"]
+collision_layer = 0
+collision_mask = 3
+gravity_scale = 0.0
+max_contacts_reported = 1
+contact_monitor = true
+script = ExtResource("1_5vlu2")
+SPEED = 10.0
+damage = -15
+
+[node name="HurtboxComponent" parent="." instance=ExtResource("1_ncr7q")]
+collision_layer = 16
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="HurtboxComponent"]
+shape = SubResource("SphereShape3D_ccgmr")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+mesh = SubResource("SphereMesh_4nilt")
+skeleton = NodePath("")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_ccgmr")
+
+[node name="TimeOutTimer" type="Timer" parent="."]
+wait_time = 6.0
+one_shot = true
+autostart = true
+
+[node name="LavaDroplets" type="GPUParticles3D" parent="."]
+randomness = 1.0
+process_material = ExtResource("4_c6n2v")
+draw_pass_1 = SubResource("QuadMesh_0536g")
+
+[connection signal="area_entered" from="HurtboxComponent" to="." method="_on_hurtbox_component_area_entered"]
+[connection signal="timeout" from="TimeOutTimer" to="." method="_on_time_out_timer_timeout"]

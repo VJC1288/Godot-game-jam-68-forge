@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://ycvgs5jb8imr"]
+
+[ext_resource type="PackedScene" uid="uid://bd7jm6x7f0sgp" path="res://Assets/sword.glb" id="1_wgm06"]
+[ext_resource type="Shape3D" uid="uid://c6uvpowjag0r8" path="res://CollisionShapes/swordcollision.tres" id="2_4h0v7"]
+[ext_resource type="Script" path="res://Scripts/sword.gd" id="2_e66gi"]
+
+[node name="Sword" type="CollisionShape3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.397562, 0)
+shape = ExtResource("2_4h0v7")
+script = ExtResource("2_e66gi")
+
+[node name="sword" parent="." instance=ExtResource("1_wgm06")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, -0.4, 0)
+
+[node name="AttachTip" type="Marker3D" parent="."]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.522054, 0)

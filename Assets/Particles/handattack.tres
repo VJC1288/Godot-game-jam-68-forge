@@ -1,0 +1,16 @@
+[gd_resource type="ParticleProcessMaterial" load_steps=3 format=3 uid="uid://snlswq21pi1v"]
+
+[sub_resource type="Curve" id="Curve_11kgb"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_o014k"]
+curve = SubResource("Curve_11kgb")
+
+[resource]
+emission_shape = 1
+emission_sphere_radius = 0.5
+inherit_velocity_ratio = 0.1
+direction = Vector3(0, -1, 0)
+spread = 90.0
+scale_curve = SubResource("CurveTexture_o014k")

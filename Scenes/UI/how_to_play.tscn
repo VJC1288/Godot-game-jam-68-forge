@@ -1,0 +1,109 @@
+[gd_scene load_steps=4 format=3 uid="uid://nxexr13pfsqy"]
+
+[ext_resource type="FontFile" uid="uid://3v73fhbabj22" path="res://Assets/Fonts/Fine Blackboard.ttf" id="1_5ky4u"]
+[ext_resource type="Script" path="res://Scripts/how_to_play.gd" id="1_uuhap"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_e17fh"]
+draw_center = false
+
+[node name="How to Play" type="MarginContainer"]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_top = 50
+theme_override_constants/margin_right = 50
+theme_override_constants/margin_bottom = 50
+script = ExtResource("1_uuhap")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 2
+mouse_filter = 2
+color = Color(0.329412, 0.0862745, 0.0784314, 1)
+
+[node name="MainPanel" type="PanelContainer" parent="."]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_e17fh")
+
+[node name="MarginContainer" type="MarginContainer" parent="MainPanel"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 30
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_right = 30
+theme_override_constants/margin_bottom = 15
+
+[node name="X How to Play" type="Button" parent="MainPanel/MarginContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+text = "X"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MainPanel/MarginContainer"]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="Label" type="Label" parent="MainPanel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_5ky4u")
+theme_override_font_sizes/font_size = 46
+text = "How to Play"
+horizontal_alignment = 1
+
+[node name="RichTextLabel" type="RichTextLabel" parent="MainPanel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 21
+text = "You are Lergin, the master sword forger. It's your main skill. It's actually your only skill... but you're really really good at it! The dwarven kingdom has ordered you to forge the best sword in the heart of Ulthaki Volcano. Let's get to work!
+
+Press left click to horizontal attack and right click to vertical attack.
+Press W, A, S, D to move and Tab to pause.
+
+When you want to use the forge, approach, press E, and select your upgrade! You can make your sword longer, repair your armor, or add spiked armor to defeat enemies that hit you.
+
+"
+fit_content = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MainPanel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="RichTextLabel" type="RichTextLabel" parent="MainPanel/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 21
+text = "Lower Left:
+ARMOR (yellow bar) and HEALTH (red bar).
+ARMOR is depleted before HEALTH.
+
+Lower Right:
+HEAT (orange bar)
+Increased by defeating enemies.
+Used for upgrades or maintained for buffs.
+"
+fit_content = true
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="MainPanel/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 21
+text = "Heat Upgrades (depletes heat bar):
+1/3 bar - Repair armor or add spiked armor.
+2/3 bar - Forge new sword part.
+
+Heat Buffs (maintain heat bar):
+Above 1/3 bar: Movement speed increase.
+Above 2/3 bar: Improved jumping.
+Full bar: Gain HEALTH on kill."
+fit_content = true
+
+[connection signal="pressed" from="MainPanel/MarginContainer/X How to Play" to="." method="_on_x_how_to_play_pressed"]

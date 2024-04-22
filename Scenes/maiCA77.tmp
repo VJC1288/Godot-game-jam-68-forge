@@ -1,0 +1,78 @@
+[gd_scene load_steps=11 format=3 uid="uid://yg5j5j3ftk42"]
+
+[ext_resource type="Script" path="res://Scripts/Main.gd" id="1_kc5k5"]
+[ext_resource type="PackedScene" uid="uid://njfod8xarnho" path="res://Scenes/anvil.tscn" id="2_ywpje"]
+[ext_resource type="PackedScene" uid="uid://2nqrxwumdvik" path="res://Scenes/enemyspawner.tscn" id="3_8sp4a"]
+[ext_resource type="PackedScene" uid="uid://docnyp7cxuxsc" path="res://Scenes/UI/hud.tscn" id="5_xun1b"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ywx2g"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_47s0t"]
+sky_material = SubResource("ProceduralSkyMaterial_ywx2g")
+
+[sub_resource type="Environment" id="Environment_b3enl"]
+background_mode = 2
+sky = SubResource("Sky_47s0t")
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rm8d5"]
+albedo_color = Color(0.282353, 0.239216, 0.0196078, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ka08m"]
+albedo_color = Color(0.513726, 0.129412, 0.192157, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4sisg"]
+albedo_color = Color(0.129412, 0.129412, 0.117647, 1)
+
+[node name="Main" type="Node3D"]
+script = ExtResource("1_kc5k5")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_b3enl")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 0, 0)
+shadow_enabled = true
+
+[node name="World" type="Node3D" parent="."]
+
+[node name="Arena" type="CSGCombiner3D" parent="World"]
+use_collision = true
+collision_layer = 2
+collision_mask = 0
+
+[node name="OuterRing" type="CSGCylinder3D" parent="World/Arena"]
+radius = 14.4406
+height = 1.36674
+sides = 32
+material = SubResource("StandardMaterial3D_rm8d5")
+
+[node name="InnerCutout" type="CSGCylinder3D" parent="World/Arena"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.546996, 0)
+operation = 2
+radius = 13.0356
+height = 1.19135
+sides = 32
+material = SubResource("StandardMaterial3D_ka08m")
+
+[node name="ForgePlatform" type="CSGCylinder3D" parent="World/Arena"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.241349, 0)
+sides = 16
+material = SubResource("StandardMaterial3D_4sisg")
+
+[node name="anvil" parent="World" instance=ExtResource("2_ywpje")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 1.16787, 0.0781487)
+
+[node name="EnemySpawner" parent="." instance=ExtResource("3_8sp4a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00443745, 0, -0.01438)
+
+[node name="UIElements" type="Node" parent="."]
+process_mode = 3
+
+[node name="HUD" parent="UIElements" instance=ExtResource("5_xun1b")]
+
+[connection signal="leftAnvil" from="World/anvil" to="." method="_on_anvil_left_anvil"]
+[connection signal="nearAnvil" from="World/anvil" to="." method="_on_anvil_near_anvil"]

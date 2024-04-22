@@ -1,0 +1,298 @@
+[gd_scene load_steps=18 format=3 uid="uid://docnyp7cxuxsc"]
+
+[ext_resource type="Script" path="res://Scripts/hud.gd" id="1_s63j7"]
+[ext_resource type="StyleBox" uid="uid://rehm8s0yxkfi" path="res://Styles/progressbarbackgroundstyle.tres" id="2_5diea"]
+[ext_resource type="Texture2D" uid="uid://cii356mqsmms4" path="res://Assets/thornsarmor.svg" id="2_lhc60"]
+[ext_resource type="Theme" uid="uid://dvnwmjqtsjco" path="res://Themes/UpgradeButtonTheme.tres" id="2_qfon4"]
+[ext_resource type="FontFile" uid="uid://3v73fhbabj22" path="res://Assets/Fonts/Fine Blackboard.ttf" id="4_i0cp8"]
+[ext_resource type="Texture2D" uid="uid://cdmuvdsnp7wa" path="res://Assets/msup.svg" id="4_k8pdl"]
+[ext_resource type="Texture2D" uid="uid://df4mcpwsdpl75" path="res://Assets/jumpup.svg" id="4_rcygd"]
+[ext_resource type="Texture2D" uid="uid://d15eqa6vw4k5r" path="res://Assets/hpregen.svg" id="4_ylpr1"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_f0t6x"]
+bg_color = Color(0.768627, 0.745098, 0, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_t5gvl"]
+bg_color = Color(0.380392, 0.0313726, 0, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_7l8xw"]
+font = ExtResource("4_i0cp8")
+font_size = 45
+shadow_color = Color(0, 0, 0, 0.00392157)
+
+[sub_resource type="Gradient" id="Gradient_ot33p"]
+offsets = PackedFloat32Array(1)
+colors = PackedColorArray(0, 0, 0, 0.501961)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_bv1xm"]
+gradient = SubResource("Gradient_ot33p")
+
+[sub_resource type="Gradient" id="Gradient_vwwlx"]
+offsets = PackedFloat32Array(0.33, 0.332571, 0.34, 0.663, 0.666, 0.669)
+colors = PackedColorArray(0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_81x2a"]
+gradient = SubResource("Gradient_vwwlx")
+fill_from = Vector2(1, 1)
+
+[sub_resource type="Gradient" id="Gradient_gvqm1"]
+colors = PackedColorArray(0.894118, 0.537255, 0, 1, 1, 0.141176, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_xf0yh"]
+gradient = SubResource("Gradient_gvqm1")
+fill_from = Vector2(1, 0.854701)
+fill_to = Vector2(1, 0.209402)
+
+[node name="HUD" type="CanvasLayer"]
+process_mode = 3
+script = ExtResource("1_s63j7")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+mouse_filter = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 7
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 7
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 2.0
+mouse_filter = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer3"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 8
+theme_override_constants/separation = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer3/VBoxContainer"]
+layout_mode = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer3/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+
+[node name="ThornsArmorIcon" type="TextureRect" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer3/VBoxContainer/HBoxContainer/CenterContainer"]
+unique_name_in_owner = true
+visible = false
+texture_filter = 1
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+texture = ExtResource("2_lhc60")
+
+[node name="ThornsCooldown" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer3/VBoxContainer/HBoxContainer/CenterContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("4_i0cp8")
+theme_override_font_sizes/font_size = 18
+
+[node name="ThornsUpgrades" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer3/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("4_i0cp8")
+theme_override_font_sizes/font_size = 16
+horizontal_alignment = 2
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer3/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("2_qfon4")
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 22
+text = "Armor"
+
+[node name="ArmorBar" type="ProgressBar" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer3/VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 15)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/background = ExtResource("2_5diea")
+theme_override_styles/fill = SubResource("StyleBoxFlat_f0t6x")
+value = 50.0
+show_percentage = false
+
+[node name="SpacerNode" type="Control" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer3/VBoxContainer"]
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 2
+
+[node name="Label2" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer3/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("2_qfon4")
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 22
+text = "Health
+"
+
+[node name="HealthBar" type="ProgressBar" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer3/VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 15)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/background = ExtResource("2_5diea")
+theme_override_styles/fill = SubResource("StyleBoxFlat_t5gvl")
+value = 50.0
+show_percentage = false
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="UIWarnings" type="CenterContainer" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="UIWarnCenter" type="CenterContainer" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2/UIWarnings"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="UIWarnCenter2" type="CenterContainer" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2/HBoxContainer2"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 0
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="UpgradeWarning" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2/HBoxContainer3"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 45
+label_settings = SubResource("LabelSettings_7l8xw")
+horizontal_alignment = 1
+
+[node name="VBoxContainer3" type="VBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+visibility_layer = 3
+z_as_relative = false
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer3"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="TimerInfo" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer3/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme = ExtResource("2_qfon4")
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 40
+horizontal_alignment = 2
+
+[node name="TimerInfo2" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer3/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme = ExtResource("2_qfon4")
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 40
+horizontal_alignment = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer3"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer3/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer3/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_bottom = 60
+
+[node name="HPRegen" type="TextureRect" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer3/HBoxContainer/VBoxContainer/MarginContainer"]
+unique_name_in_owner = true
+visible = false
+texture_filter = 1
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 4
+texture = ExtResource("4_ylpr1")
+
+[node name="MarginContainer2" type="MarginContainer" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer3/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_bottom = 60
+
+[node name="JumpUp" type="TextureRect" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer3/HBoxContainer/VBoxContainer/MarginContainer2"]
+unique_name_in_owner = true
+visible = false
+texture_filter = 1
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 4
+texture = ExtResource("4_rcygd")
+
+[node name="MarginContainer3" type="MarginContainer" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer3/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_bottom = 32
+
+[node name="MSUp" type="TextureRect" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer3/HBoxContainer/VBoxContainer/MarginContainer3"]
+unique_name_in_owner = true
+visible = false
+texture_filter = 1
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 4
+texture = ExtResource("4_k8pdl")
+
+[node name="HeatBar" type="TextureProgressBar" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer3/HBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(20, 300)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 10
+max_value = 150.0
+fill_mode = 3
+nine_patch_stretch = true
+texture_under = SubResource("GradientTexture1D_bv1xm")
+texture_over = SubResource("GradientTexture2D_81x2a")
+texture_progress = SubResource("GradientTexture2D_xf0yh")

@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=3 uid="uid://cc4tk5fipkhrq"]
+
+[ext_resource type="Script" path="res://Scripts/weapon.gd" id="1_l8xvi"]
+
+[node name="Weapon" type="Area3D" groups=["Weapon"]]
+collision_layer = 8
+collision_mask = 4
+monitoring = false
+script = ExtResource("1_l8xvi")
+damage = -50
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]

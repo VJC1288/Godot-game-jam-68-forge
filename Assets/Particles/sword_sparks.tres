@@ -1,0 +1,31 @@
+[gd_resource type="ParticleProcessMaterial" load_steps=5 format=3 uid="uid://dh37tb1cahpbb"]
+
+[sub_resource type="Curve" id="Curve_6jsht"]
+_data = [Vector2(0.521739, 1), 0.0, 0.0, 0, 0]
+point_count = 1
+
+[sub_resource type="CurveXYZTexture" id="CurveXYZTexture_7b0ms"]
+curve_x = SubResource("Curve_6jsht")
+
+[sub_resource type="Curve" id="Curve_pshkn"]
+max_value = 3.0
+_data = [Vector2(0.00724638, 1.48352), 0.0, 0.0, 0, 0, Vector2(0.478261, 0.791209), 0.0, 0.0, 0, 0, Vector2(0.971014, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_vwjch"]
+curve = SubResource("Curve_pshkn")
+
+[resource]
+lifetime_randomness = 0.5
+spread = 90.0
+initial_velocity_min = 2.0
+initial_velocity_max = 2.0
+directional_velocity_min = 1.0
+directional_velocity_max = 1.0
+directional_velocity_curve = SubResource("CurveXYZTexture_7b0ms")
+scale_min = 0.05
+scale_max = 0.1
+scale_over_velocity_curve = SubResource("CurveTexture_vwjch")
+collision_mode = 1
+collision_friction = 0.0
+collision_bounce = 0.5

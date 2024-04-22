@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=3 uid="uid://cq411xffyw5fe"]
+
+[ext_resource type="Material" uid="uid://dh37tb1cahpbb" path="res://Assets/Particles/sword_sparks.tres" id="1_6ebgi"]
+[ext_resource type="Script" path="res://Scripts/sword_sparks.gd" id="1_re6vj"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pd8av"]
+metallic = 1.0
+emission_enabled = true
+emission = Color(1, 1, 0, 1)
+emission_energy_multiplier = 5.0
+billboard_mode = 1
+billboard_keep_scale = true
+
+[sub_resource type="QuadMesh" id="QuadMesh_cj65h"]
+material = SubResource("StandardMaterial3D_pd8av")
+
+[node name="SwordSparks" type="GPUParticles3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.711124, 0)
+emitting = false
+lifetime = 1.5
+one_shot = true
+explosiveness = 1.0
+randomness = 1.0
+fixed_fps = 60
+process_material = ExtResource("1_6ebgi")
+draw_pass_1 = SubResource("QuadMesh_cj65h")
+script = ExtResource("1_re6vj")
+
+[connection signal="finished" from="." to="." method="_on_finished"]

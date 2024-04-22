@@ -1,0 +1,140 @@
+[gd_scene load_steps=8 format=3 uid="uid://docnyp7cxuxsc"]
+
+[ext_resource type="Script" path="res://Scripts/HUD.gd" id="1_s1jp4"]
+[ext_resource type="Texture2D" uid="uid://dkvxhjafrxs7i" path="res://Assets/ghostly-tileset.png" id="2_5j454"]
+[ext_resource type="FontFile" uid="uid://ulu7kgqxb12r" path="res://Assets/Fonts/LoSumires-2X8l.ttf" id="2_tmh54"]
+[ext_resource type="LabelSettings" uid="uid://bh27ntp1vr8nk" path="res://LabelSettings/pickuptextlabelsetting.tres" id="4_smcwm"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xdvef"]
+shadow_color = Color(0, 0, 0, 0.501961)
+shadow_size = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_t5gvl"]
+bg_color = Color(0.380392, 0.0313726, 0, 1)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ak6qm"]
+atlas = ExtResource("2_5j454")
+region = Rect2(456, 40, 16, 16)
+
+[node name="HUD" type="CanvasLayer"]
+script = ExtResource("1_s1jp4")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 7
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 7
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="HealthBar" type="ProgressBar" parent="MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 7)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/background = SubResource("StyleBoxFlat_xdvef")
+theme_override_styles/fill = SubResource("StyleBoxFlat_t5gvl")
+value = 50.0
+show_percentage = false
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="PickupMessage" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer3"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 1
+theme_override_fonts/font = ExtResource("2_tmh54")
+text = "Test"
+vertical_alignment = 2
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="MarginContainer/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="VBoxContainer3" type="VBoxContainer" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/HBoxContainer/VBoxContainer3"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = -1
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer/VBoxContainer3/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 10
+size_flags_vertical = 0
+size_flags_stretch_ratio = 10.0
+texture = SubResource("AtlasTexture_ak6qm")
+
+[node name="CoinCount" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer3/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 10
+size_flags_vertical = 0
+theme_override_colors/font_color = Color(0.705882, 0.603922, 0, 1)
+theme_override_fonts/font = ExtResource("2_tmh54")
+text = "XX"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer/HBoxContainer/VBoxContainer3"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="MarginContainer/HBoxContainer/VBoxContainer3"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="PickupMessage" type="Label" parent="MarginContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 1
+text = "Test"
+label_settings = ExtResource("4_smcwm")
+vertical_alignment = 2
+
+[node name="ScreenTransition" type="ColorRect" parent="."]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+color = Color(0, 0, 0, 0)
