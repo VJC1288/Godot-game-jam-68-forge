@@ -1,6 +1,6 @@
 [gd_resource type="ShaderMaterial" load_steps=5 format=3 uid="uid://dqbvaqkjf7ngr"]
 
-[ext_resource type="Shader" path="res://Materials/volcanopit.gdshader" id="1_jxr07"]
+[ext_resource type="Shader" uid="uid://bnss5vbms3xvt" path="res://Materials/volcanopit.gdshader" id="1_jxr07"]
 
 [sub_resource type="Gradient" id="Gradient_djs7u"]
 offsets = PackedFloat32Array(0, 0.696721, 0.868852, 1)

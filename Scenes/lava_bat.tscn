@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://cjlbg3xfqffwq" path="res://Scenes/baseEnemy.tscn" id="1_3uaj8"]
 [ext_resource type="PackedScene" uid="uid://bj3fob1rfkj66" path="res://Assets/lavabat.glb" id="2_7jvbv"]
-[ext_resource type="Script" path="res://Scripts/lava_bat.gd" id="2_y04ho"]
+[ext_resource type="Script" uid="uid://og6pqjlsxxen" path="res://Scripts/lava_bat.gd" id="2_y04ho"]
 [ext_resource type="Shape3D" uid="uid://bcfcap6f0882v" path="res://CollisionShapes/lava_bat_wings.tres" id="3_mh62k"]
 
 [node name="LavaBat" node_paths=PackedStringArray("animation_player") instance=ExtResource("1_3uaj8")]

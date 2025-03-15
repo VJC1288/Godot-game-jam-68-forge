@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://cdckmp0wuk80"]
 
-[ext_resource type="Script" path="res://Scripts/gameover.gd" id="1_lvc2v"]
+[ext_resource type="Script" uid="uid://dedx18n5osbyw" path="res://Scripts/gameover.gd" id="1_lvc2v"]
 [ext_resource type="Theme" uid="uid://dvnwmjqtsjco" path="res://Themes/UpgradeButtonTheme.tres" id="1_ukr34"]
 [ext_resource type="FontFile" uid="uid://dbnlbadp20dq1" path="res://Assets/Fonts/VarsityPlaybook-23yo.ttf" id="2_cq738"]
 

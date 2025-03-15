@@ -1,6 +1,6 @@
 [gd_scene load_steps=18 format=3 uid="uid://docnyp7cxuxsc"]
 
-[ext_resource type="Script" path="res://Scripts/hud.gd" id="1_s63j7"]
+[ext_resource type="Script" uid="uid://bpvut5xa4filq" path="res://Scripts/hud.gd" id="1_s63j7"]
 [ext_resource type="StyleBox" uid="uid://rehm8s0yxkfi" path="res://Styles/progressbarbackgroundstyle.tres" id="2_5diea"]
 [ext_resource type="Texture2D" uid="uid://cii356mqsmms4" path="res://Assets/thornsarmor.svg" id="2_lhc60"]
 [ext_resource type="Theme" uid="uid://dvnwmjqtsjco" path="res://Themes/UpgradeButtonTheme.tres" id="2_qfon4"]

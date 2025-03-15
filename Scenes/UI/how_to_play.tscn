@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://nxexr13pfsqy"]
 
 [ext_resource type="FontFile" uid="uid://3v73fhbabj22" path="res://Assets/Fonts/Fine Blackboard.ttf" id="1_5ky4u"]
-[ext_resource type="Script" path="res://Scripts/how_to_play.gd" id="1_uuhap"]
+[ext_resource type="Script" uid="uid://cjkv7omuxdce3" path="res://Scripts/how_to_play.gd" id="1_uuhap"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_e17fh"]
 draw_center = false

@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://cq411xffyw5fe"]
 
 [ext_resource type="Material" uid="uid://dh37tb1cahpbb" path="res://Assets/Particles/sword_sparks.tres" id="1_6ebgi"]
-[ext_resource type="Script" path="res://Scripts/sword_sparks.gd" id="1_re6vj"]
+[ext_resource type="Script" uid="uid://wjne7nsc5wqs" path="res://Scripts/sword_sparks.gd" id="1_re6vj"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pd8av"]
 metallic = 1.0

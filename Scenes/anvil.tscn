@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://njfod8xarnho"]
 
 [ext_resource type="PackedScene" uid="uid://s076wouif4pm" path="res://Assets/anvil.glb" id="1_6uon5"]
-[ext_resource type="Script" path="res://Scripts/anvil.gd" id="2_debuh"]
+[ext_resource type="Script" uid="uid://b8n2yoxoewvpb" path="res://Scripts/anvil.gd" id="2_debuh"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_b405o"]
 albedo_color = Color(0.117647, 0, 0.160784, 1)

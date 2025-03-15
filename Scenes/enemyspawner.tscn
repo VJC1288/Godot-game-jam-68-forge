@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://2nqrxwumdvik"]
 
-[ext_resource type="Script" path="res://Scripts/enemyspawner.gd" id="1_24oef"]
+[ext_resource type="Script" uid="uid://k8nlyjb8iecl" path="res://Scripts/enemyspawner.gd" id="1_24oef"]
 [ext_resource type="AudioStream" uid="uid://dtmt3uwx38pia" path="res://Assets/Sounds/soil and dirt debris heavy 13.wav" id="4_8qkfv"]
 [ext_resource type="AudioStream" uid="uid://ma87ix3wxexx" path="res://Assets/Sounds/slimejump-6913.mp3" id="5_w72mp"]
 [ext_resource type="AudioStream" uid="uid://w7gofjswwva3" path="res://Assets/Sounds/bat_01.mp3" id="6_rb11t"]

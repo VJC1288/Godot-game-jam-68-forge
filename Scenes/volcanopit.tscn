@@ -1,7 +1,7 @@
 [gd_scene load_steps=10 format=3 uid="uid://bpv254igwn1vd"]
 
 [ext_resource type="PackedScene" uid="uid://b1quqcmljpvlc" path="res://Assets/volcanopit.glb" id="1_cbl18"]
-[ext_resource type="Script" path="res://Scripts/volcanopit.gd" id="2_8xu6g"]
+[ext_resource type="Script" uid="uid://vvy1usq6xi7s" path="res://Scripts/volcanopit.gd" id="2_8xu6g"]
 [ext_resource type="Material" uid="uid://dqbvaqkjf7ngr" path="res://Materials/volcanopit.tres" id="3_i0jc3"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_j8s6t"]

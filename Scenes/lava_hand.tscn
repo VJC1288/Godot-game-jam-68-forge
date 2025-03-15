@@ -1,7 +1,7 @@
 [gd_scene load_steps=13 format=3 uid="uid://dv1hbai1h0o1d"]
 
 [ext_resource type="PackedScene" uid="uid://cjlbg3xfqffwq" path="res://Scenes/baseEnemy.tscn" id="1_1jhko"]
-[ext_resource type="Script" path="res://Scripts/lava_hand.gd" id="2_bdx08"]
+[ext_resource type="Script" uid="uid://daplsb7kbvyub" path="res://Scripts/lava_hand.gd" id="2_bdx08"]
 [ext_resource type="PackedScene" uid="uid://dx61mthiijuuj" path="res://Assets/lavahand.glb" id="2_prlx2"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_03661"]
@@ -217,8 +217,8 @@ tracks/13/keys = PackedFloat32Array(0, 1, -0.0153255, -0.000111479, -0.00194589,
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_08uc3"]
 _data = {
-"attackanimation": SubResource("Animation_2rl7j"),
-"idle": SubResource("Animation_3ub7n")
+&"attackanimation": SubResource("Animation_2rl7j"),
+&"idle": SubResource("Animation_3ub7n")
 }
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_1hbp3"]

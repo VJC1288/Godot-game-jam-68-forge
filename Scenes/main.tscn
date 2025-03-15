@@ -1,6 +1,6 @@
 [gd_scene load_steps=16 format=3 uid="uid://yg5j5j3ftk42"]
 
-[ext_resource type="Script" path="res://Scripts/Main.gd" id="1_kc5k5"]
+[ext_resource type="Script" uid="uid://chqxdsovmxpgw" path="res://Scripts/Main.gd" id="1_kc5k5"]
 [ext_resource type="PackedScene" uid="uid://njfod8xarnho" path="res://Scenes/anvil.tscn" id="2_ywpje"]
 [ext_resource type="PackedScene" uid="uid://2nqrxwumdvik" path="res://Scenes/enemyspawner.tscn" id="3_8sp4a"]
 [ext_resource type="AudioStream" uid="uid://5je6mbc7vwer" path="res://Assets/Sounds/lava-loop-3-28887.mp3" id="4_ksswk"]

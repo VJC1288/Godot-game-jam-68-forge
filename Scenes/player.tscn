@@ -1,13 +1,13 @@
 [gd_scene load_steps=41 format=3 uid="uid://brmrk0ke8mxrc"]
 
-[ext_resource type="Script" path="res://Scripts/Player.gd" id="1_3bkjk"]
-[ext_resource type="Script" path="res://Scripts/armorcomponent.gd" id="1_rqhxq"]
+[ext_resource type="Script" uid="uid://46fbpvmqf4no" path="res://Scripts/Player.gd" id="1_3bkjk"]
+[ext_resource type="Script" uid="uid://ctvfevamtjgl5" path="res://Scripts/armorcomponent.gd" id="1_rqhxq"]
 [ext_resource type="PackedScene" uid="uid://cc4tk5fipkhrq" path="res://Scenes/weapon.tscn" id="2_lslkj"]
 [ext_resource type="Texture2D" uid="uid://bc70vyb6s67oq" path="res://Assets/ekey.svg" id="3_u3cyn"]
 [ext_resource type="PackedScene" uid="uid://wyas78h11w3c" path="res://Scenes/health_component.tscn" id="4_e06ys"]
 [ext_resource type="PackedScene" uid="uid://c2bbmdsd1d3ac" path="res://Scenes/hitbox_component.tscn" id="4_j2tln"]
 [ext_resource type="PackedScene" uid="uid://b8q56woe4onxb" path="res://Scenes/armor_component.tscn" id="5_s7j0c"]
-[ext_resource type="Script" path="res://Scripts/player_hitbox.gd" id="6_1toe0"]
+[ext_resource type="Script" uid="uid://bl6iawwkvlui1" path="res://Scripts/player_hitbox.gd" id="6_1toe0"]
 [ext_resource type="PackedScene" uid="uid://bdwbqsn65btfl" path="res://Assets/dwarf.glb" id="6_towm1"]
 [ext_resource type="PackedScene" uid="uid://ycvgs5jb8imr" path="res://Scenes/sword.tscn" id="8_bd7kl"]
 [ext_resource type="Animation" uid="uid://bbftk6vk7svpy" path="res://Animations/attackanimationdwarf.res" id="8_ygyyq"]
@@ -694,13 +694,13 @@ tracks/22/keys = PackedFloat32Array(0, 1, 0.0695491, 0.306183, 0.0918595, 0.9449
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_0626j"]
 _data = {
-"Vattackanimation": ExtResource("12_ltg50"),
-"attackanimation": ExtResource("8_ygyyq"),
-"idleanimation": SubResource("Animation_un154"),
-"jumpanimation": ExtResource("14_px8qb"),
-"runbackanimation": SubResource("Animation_ejt60"),
-"runforwardanimation": SubResource("Animation_o1nni"),
-"runleftanimation": SubResource("Animation_g6ncu")
+&"Vattackanimation": ExtResource("12_ltg50"),
+&"attackanimation": ExtResource("8_ygyyq"),
+&"idleanimation": SubResource("Animation_un154"),
+&"jumpanimation": ExtResource("14_px8qb"),
+&"runbackanimation": SubResource("Animation_ejt60"),
+&"runforwardanimation": SubResource("Animation_o1nni"),
+&"runleftanimation": SubResource("Animation_g6ncu")
 }
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ifqut"]

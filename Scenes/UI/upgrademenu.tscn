@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://b3uh6g3rrp12g"]
 
 [ext_resource type="Theme" uid="uid://b4knmhu40p3li" path="res://Themes/UITitleTheme.tres" id="1_0nymn"]
-[ext_resource type="Script" path="res://Scripts/upgrademenu.gd" id="1_2b1ss"]
+[ext_resource type="Script" uid="uid://yf8pvm578egh" path="res://Scripts/upgrademenu.gd" id="1_2b1ss"]
 [ext_resource type="Theme" uid="uid://dvnwmjqtsjco" path="res://Themes/UpgradeButtonTheme.tres" id="2_7qp8v"]
 [ext_resource type="AudioStream" uid="uid://32xjjxlrbwjx" path="res://Assets/Sounds/weapons-smithing-42563.mp3" id="4_4d8c0"]
 

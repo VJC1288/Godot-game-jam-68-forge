@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://cc4tk5fipkhrq"]
 
-[ext_resource type="Script" path="res://Scripts/weapon.gd" id="1_l8xvi"]
+[ext_resource type="Script" uid="uid://mbcsmb0kv0g7" path="res://Scripts/weapon.gd" id="1_l8xvi"]
 
 [node name="Weapon" type="Area3D" groups=["Weapon"]]
 collision_layer = 8
